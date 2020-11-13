@@ -40,7 +40,10 @@ function App() {
             value={inputList}
             onChange={itemEvent}
           />
-          <button onClick={listOfItems}> + </button>
+          <button id="btn" onClick={listOfItems}>
+            {" "}
+            +{" "}
+          </button>
 
           <ol>
             {Items.map((itemVal, index) => {

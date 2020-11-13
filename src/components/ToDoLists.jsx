@@ -4,6 +4,7 @@ const ToDoList = (props) => {
   return (
     <>
       <div className="todo_style">
+        <li className="list">{props.text}</li>
         <i
           class="fas fa-times"
           aria-hidden="true"
@@ -11,7 +12,6 @@ const ToDoList = (props) => {
             props.onSelect(props.id);
           }}
         />
-        <li>{props.text}</li>;
       </div>
     </>
   );
