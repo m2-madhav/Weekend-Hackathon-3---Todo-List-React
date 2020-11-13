@@ -1,65 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import Task from "./task";
 import "./../styles/App.css";
-import ToDoList from "./ToDoLists";
 
 function App() {
-  const [inputList, setInputList] = useState(" ");
+  const [tasks, setTasks] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-  const itemEvent = (event) => {
-    setInputList(event.target.value);
+  const taskId = useRef(0);
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
   };
 
-  const [Items, setItems] = useState([]);
-  const listOfItems = () => {
-    setItems((oldItems) => {
-      return [...oldItems, inputList];
-    });
-    setInputList(" ");
+  const handleClick = () => {
+    const updatedTasks = [...tasks];
+    updatedTasks.push({ id: taskId.current, text: inputValue });
+    taskId.current = taskId.current + 1;
+    setInputValue("");
+    setTasks(updatedTasks);
   };
 
-  const deleteItem = (id) => {
-    console.log("deleted");
+  const handleDelete = (id) => {
+    const taskCopy = [...tasks];
+    const filteredTasks = taskCopy.filter((task) =>
+      task.id !== id ? task : null
+    );
+    setTasks(filteredTasks);
+  };
 
-    setItems((oldItems) => {
-      return oldItems.filter((arrEle, index) => {
-        return index !== id;
-      });
+  const saveChangedText = (id, newtext) => {
+    const taskCopy = [...tasks];
+    taskCopy.forEach((task) => {
+      if (task.id === id) {
+        task.text = newtext;
+      }
     });
+    setTasks(taskCopy);
   };
 
   return (
-    <>
-      <div id="main">
-        <div id="task">
-          <br />
-          <h1>ToDO List</h1>
-          <br />
-          <input
-            type="text"
-            placeholder="Add an items"
-            value={inputList}
-            onChange={itemEvent}
+    <div id="main">
+      <input
+        id="task"
+        type="textarea"
+        value={inputValue}
+        onChange={handleChange}
+      ></input>
+      <button id="btn" onClick={handleClick} disabled={!inputValue}>
+        Add Task
+      </button>
+      <ol>
+        {tasks.map((task) => (
+          <Task
+            key={task.id}
+            task={task}
+            saveChangedText={saveChangedText}
+            handleDelete={handleDelete}
           />
-          <button id="btn" onClick={listOfItems}>
-            {" "}
-            +{" "}
-          </button>
-
-          <ol>
-            {Items.map((itemVal, index) => {
-              return (
-                <ToDoList
-                  key={index}
-                  id={index}
-                  text={itemVal}
-                  onSelect={deleteItem}
-                />
-              );
-            })}
-          </ol>
-        </div>
-      </div>
-    </>
+        ))}
+      </ol>
+    </div>
   );
 }
 
