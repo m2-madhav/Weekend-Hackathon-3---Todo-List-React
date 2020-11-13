@@ -16,8 +16,8 @@
   text-align: center;
 }
 
-#center_div {
-  width: 25%;
+#task {
+  width: 50%;
   height: 80vh;
   background-color: #f4f4f4;
   box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.5);
@@ -46,7 +46,7 @@ input {
   outline: none;
 }
 
-button {
+#btn {
   min-height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -60,7 +60,7 @@ button {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
-button:hover {
+#btn:hover {
   background-color: #27aedb;
 }
 
@@ -75,7 +75,7 @@ ol li {
   min-height: 40px;
   display: flex;
   align-items: center;
-  color: #8566aa;
+  color: crimson;
   text-transform: capitalize;
 }
 
@@ -86,9 +86,9 @@ ol li {
   align-items: center;
 }
 
-.todo_style .fa-times {
-  width: 20px;
-  height: 20px;
+.todo_style .delete {
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,31 +96,26 @@ ol li {
   border-radius: 50%;
   margin: 0 15px 0 35px;
   color: aliceblue;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
-.todo_style .fa-times:hover {
+.todo_style .delete:hover {
   background-color: crimson;
 }
 
-.todo_style .fa-times:hover .list_style {
-  color: crimson;
-}
-
 @media (max-width: 768px) {
-  #center_div {
+  #task {
     width: 55%;
     height: 60%;
   }
 }
 
-.todo_style .fa-times {
+.todo_style .delete {
   margin: 0 15px 0 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-button {
+#btn {
   margin-left: 5px;
   min-height: 40px;
   width: 40px;

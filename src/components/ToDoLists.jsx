@@ -4,16 +4,16 @@ const ToDoList = (props) => {
   return (
     <>
       <div className="todo_style">
-        <ol>
-          <li className="list">{props.text}</li>
-          <i
-            class="fas fa-times"
-            aria-hidden="true"
-            onClick={() => {
-              props.onSelect(props.id);
-            }}
-          />
-        </ol>
+        <li className="list">{props.text} .</li>
+
+        <button
+          className="delete"
+          onClick={() => {
+            props.onSelect(props.id);
+          }}
+        >
+          del
+        </button>
       </div>
     </>
   );

@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div id="main">
-        <div id="center_div">
+        <div id="task">
           <br />
           <h1>ToDO List</h1>
           <br />
